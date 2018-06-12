@@ -1,4 +1,3 @@
-'use strict';
 import '../css/style.css';
 
 class User {

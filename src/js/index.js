@@ -1,5 +1,3 @@
-'use strict';
-
 import { User } from './user';
 
 window.onload = () => {
