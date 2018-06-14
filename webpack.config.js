@@ -4,7 +4,7 @@ const htmlWebpack = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, 'src/js/index.js'),
+        main: path.resolve(__dirname, 'src/index.jsx'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -13,7 +13,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -32,7 +32,7 @@ module.exports = {
     [
         new extractText({filename: 'main.[chunkhash].css'}),
         new htmlWebpack({
-            template: path.resolve(__dirname, 'src/html/index.html'),
+            template: path.resolve(__dirname, 'src/index.html'),
             filename: 'index.html',
         })
     ],
