@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
+import './style.sass';
 
-import Header from './Header/Header.jsx';
+import Header from 'components/Header/Header';
 
-import NavigationMenu from './NavigationMenu/NavigationMenu.jsx';
-import {navigationMenuItems} from './NavigationMenu/NavigationMenuItems.js';
+import NavigationMenu from 'components/NavigationMenu/NavigationMenu';
+import {navigationMenuItems} from 'components/NavigationMenu/NavigationMenuItems';
 
-import Content from './Content/Content.jsx';
-import {contentItems} from './Content/contentItems.js';
+import Content from 'components/Content/Content';
+import {contentItems} from 'components/Content/contentItems';
 
 class Container extends React.Component {
     render() {

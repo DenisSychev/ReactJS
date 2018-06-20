@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavigationMenu.css';
+import './NavigationMenu.sass';
 
 export default class NavigationMenu extends React.Component {
     render() {

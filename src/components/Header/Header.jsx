@@ -1,5 +1,5 @@
 import React from 'react';
-import './HeaderButton.css';
+import './HeaderButton.sass';
 
 export default class Header extends React.Component {
     render() {
