@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './style.sass';
 
-import Header from 'components/Header/Header';
+import Header from 'components/Header';
 
-import NavigationMenu from 'components/NavigationMenu/NavigationMenu';
+import NavigationMenu from 'components/NavigationMenu';
 import {navigationMenuItems} from 'components/NavigationMenu/NavigationMenuItems';
 
-import Content from 'components/Content/Content';
+import Content from 'components/Content';
 import {contentItems} from 'components/Content/contentItems';
 
-class Container extends React.Component {
+class Container extends Component {
     render() {
         return (
-            <div className='container'>
+            <Fragment>
                 <Header />
                 <NavigationMenu naviMenuItems = {navigationMenuItems} />
-                <Content contentItems = {contentItems} />
-            </div>            
+                <Content contentItems = {contentItems} hide/>
+            </Fragment>            
         );
     }
 };

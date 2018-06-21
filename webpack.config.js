@@ -26,7 +26,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.s?css$/,
+                test: /\.s?a?c?ss$/,
                 use: extractText.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'postcss-loader', 'sass-loader'],

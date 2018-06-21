@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './NavigationMenu.sass';
 
-export default class NavigationMenu extends React.Component {
+export default class NavigationMenu extends Component {
     render() {
         const {naviMenuItems} = this.props;
         return (
-            <div className='navi'>
-                <ul>
+            <header>
+                <ul className = "navi container">
                     {naviMenuItems.map(naviMenuitem => <li><a href={naviMenuitem.link}>{naviMenuitem.title}</a></li>)}
                 </ul>
-            </div>
+            </header>            
         );
     }
 };
