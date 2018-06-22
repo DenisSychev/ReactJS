@@ -10,6 +10,8 @@ import {navigationMenuItems} from 'components/NavigationMenu/NavigationMenuItems
 import Content from 'components/Content';
 import {contentItems} from 'components/Content/contentItems';
 
+import Users from 'containers/UsersContainer';
+
 class Container extends Component {
     render() {
         return (
@@ -17,6 +19,7 @@ class Container extends Component {
                 <Header />
                 <NavigationMenu naviMenuItems = {navigationMenuItems} />
                 <Content contentItems = {contentItems} hide/>
+                <Users />
             </Fragment>            
         );
     }
