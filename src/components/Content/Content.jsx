@@ -9,7 +9,7 @@ export default class Content extends Component {
         return (
             <Fragment>
                 {contentItems.map(contentitem => 
-                <div className = "content container">
+                <div className = "content container" key = {contentitem.id}>
                     <h1>{contentitem.title}</h1>
                     <p className = "author">{contentitem.author}</p>
                     <p>{contentitem.text}</p>
