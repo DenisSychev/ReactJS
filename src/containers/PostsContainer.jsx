@@ -1,24 +1,24 @@
 import React, {PureComponent, Fragment} from 'react';
 
-import Users from 'components/Users';
+import PostsList from 'components/PostsList';
 
-export default class UsersContainer extends PureComponent {
+export default class PostsContainer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            usersList: []
+            posts: []
         };
     }
 
     componentDidMount() {
         this.setState({loading: true});
-        fetch('http://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/posts')
         .then((response) => response.json())
-        .then((usersList) => {
+        .then((result) => {
             this.setState({
                 loading: false,
-                usersList
+                posts
             })
         })
         .catch(() => {
@@ -27,10 +27,12 @@ export default class UsersContainer extends PureComponent {
     }
 
     render() {
-        const {loading, usersList} = this.state;
+        const {loading, posts} = this.state;
         return (
             <Fragment>
-                {loading ? <div>Секундочку, идёт загрузка...</div> : <Users usersList = {usersList} />}
+                <div className = "content container">
+                    {loading ? <div>Секундочку, идёт загрузка...</div> : <PostsList posts={posts} />}
+                </div>
             </Fragment>
         );
     }
