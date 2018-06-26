@@ -13,7 +13,7 @@ export default class PostsContainer extends PureComponent {
 
     loadPosts() {
         const {page, posts} = this.state;
-        if (page===1) {
+        if (page === 1) {
             this.setState({loading: true});
         }        
         fetch(`https://jsonplaceholder.typicode.com/posts?limit=10&_page=${page}`)
@@ -34,7 +34,7 @@ export default class PostsContainer extends PureComponent {
         this.loadPosts();
     };
 
-    handleLoadMore =()=> {
+    handleLoadMore = () => {
         this.loadPosts();
     };
 
@@ -42,7 +42,7 @@ export default class PostsContainer extends PureComponent {
         const {loading, posts} = this.state;
         return (
             <Fragment>
-                <div className = "content container">
+                <div className="content container">
                     {loading ? <div>Секундочку, идёт загрузка...</div> : <PostsList onLoadMore={this.handleLoadMore} posts={posts} />}
                 </div>
             </Fragment>

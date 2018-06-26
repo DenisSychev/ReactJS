@@ -15,7 +15,7 @@ class Container extends Component {
         return (
             <Fragment>
                 <Header />
-                <NavigationMenu naviMenuItems = {navigationMenuItems} />
+                <NavigationMenu naviMenuItems={navigationMenuItems} />
                 <PostsList />
                 <UserList />
             </Fragment>            

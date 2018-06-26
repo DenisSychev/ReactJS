@@ -14,7 +14,6 @@ export default class PostsList extends PureComponent {
                     <h1>{post.title}</h1>
                     <p className="author">{post.userId}</p>
                     <p>{post.body}</p>
-                    <img src='' alt=''/>
                     <CommentsAdd />
                     <CommentsList />
                 </div>)}

@@ -13,7 +13,7 @@ export default class CommentsContainer extends PureComponent {
 
     loadComments() {
         const {page, comments} = this.state;
-        if (page===1) {
+        if (page === 1) {
             this.setState({loading: true});
         }
         fetch(`https://jsonplaceholder.typicode.com/comments?limit=3&_page=${page}`)
@@ -34,7 +34,7 @@ export default class CommentsContainer extends PureComponent {
         this.loadComments();
     };
 
-    handleLoadMore =()=> {
+    handleLoadMore = () => {
         this.loadComments();
     };
 
