@@ -18,7 +18,7 @@ export default class UserListContainer extends PureComponent {
         .then((result) => {
             this.setState({
                 loading: false,
-                users
+                users: result
             })
         })
         .catch(() => {

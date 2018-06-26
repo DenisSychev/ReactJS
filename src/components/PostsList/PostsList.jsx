@@ -5,7 +5,7 @@ import Comment from 'components/Comment';
 
 export default class PostsList extends PureComponent {
     render() {
-        const {posts} = this.props;
+        const {posts} = this.props;        
         return (
             <Fragment>
                 {posts.map(post => 

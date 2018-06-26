@@ -18,7 +18,7 @@ export default class PostsContainer extends PureComponent {
         .then((result) => {
             this.setState({
                 loading: false,
-                posts
+                posts: result
             })
         })
         .catch(() => {
