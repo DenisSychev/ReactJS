@@ -1,28 +1,28 @@
 import React, {PureComponent, Fragment} from 'react';
 
-import PostsList from 'components/PostsList';
+import CommentsList from 'components/CommentsList';
 
-export default class PostsContainer extends PureComponent {
+export default class CommentsContainer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            posts: []
+            comments: []
         };
     }
 
-    loadPosts() {
-        const {page, posts} = this.state;
+    loadComments() {
+        const {page, comments} = this.state;
         if (page===1) {
             this.setState({loading: true});
-        }        
-        fetch(`https://jsonplaceholder.typicode.com/posts?limit=10&_page=${page}`)
+        }
+        fetch(`https://jsonplaceholder.typicode.com/comments?limit=3&_page=${page}`)
         .then((response) => response.json())
         .then((result) => {
             this.setState({
                 loading: false,
                 page: page + 1,
-                posts: posts.concat(result),
+                comments: comments.concat(result),
             })
         })
         .catch(() => {
@@ -31,21 +31,22 @@ export default class PostsContainer extends PureComponent {
     };
 
     componentDidMount() {
-        this.loadPosts();
+        this.loadComments();
     };
 
     handleLoadMore =()=> {
-        this.loadPosts();
+        this.loadComments();
     };
 
     render() {
-        const {loading, posts} = this.state;
+        const {loading, comments} = this.state;
         return (
             <Fragment>
                 <div className = "content container">
-                    {loading ? <div>Секундочку, идёт загрузка...</div> : <PostsList onLoadMore={this.handleLoadMore} posts={posts} />}
+                    {loading ? <div>Секундочку, идёт загрузка...</div> : <CommentsList onLoadMore={this.handleLoadMore} comments={comments} />}
                 </div>
             </Fragment>
         );
     }
 }
+
