@@ -5,12 +5,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './style.sass';
 
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 import NavigationMenu from 'components/NavigationMenu';
 import { navigationMenuItems } from 'components/NavigationMenu/NavigationMenuItems';
 
-import PostsList from 'containers/PostsContainer';
-import UserList from 'containers/UserListContainer';
 import routes from './routes';
 
 class Container extends Component {
@@ -24,6 +23,7 @@ class Container extends Component {
                         {routes.map((route) => <Route {...route} />)}
                     </Switch>
                 </BrowserRouter>
+                <Footer />
             </Fragment>
         );
     }
