@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './Comment.sass';
 
-export default class Comment extends Component {
+export default class CommentsAdd extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +12,6 @@ export default class Comment extends Component {
     }
 
     handleButtonClickShowComment = (e) => {
-        console.log('Click button');
         this.setState({ displayForm: true });
         this.setState({ displayAddButton: false });
         this.setState({ displayHideButton: true });
@@ -20,7 +19,6 @@ export default class Comment extends Component {
     }
 
     handleButtonClickHideComment = (e) => {
-        console.log('Click button');
         this.setState({ displayForm: false });
         this.setState({ displayAddButton: true });
         this.setState({ displayHideButton: false });
@@ -32,7 +30,7 @@ export default class Comment extends Component {
         const {displayAddButton} = this.state;
         const {displayHideButton} = this.state;
         return (
-            <div className = "comment">
+            <div className="comment">
                 <button style = {{display: displayAddButton ? 'block' : 'none' }} className="red_button" onClick = {this.handleButtonClickShowComment}>Добавить комментарий</button>
                 <button style = {{display: displayHideButton ? 'block' : 'none' }} className="red_button" onClick = {this.handleButtonClickHideComment}>Скрыть поле комментария</button>
                 <div style = {{display: displayForm ? 'block' : 'none' }}>

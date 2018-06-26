@@ -7,7 +7,7 @@ export default class NavigationMenu extends Component {
         return (
             <header>
                 <ul className = "navi container">
-                    {naviMenuItems.map(naviMenuitem => <li><a href={naviMenuitem.link}>{naviMenuitem.title}</a></li>)}
+                    {naviMenuItems.map(naviMenuitem => <li key = {naviMenuitem.id}><a href={naviMenuitem.link}>{naviMenuitem.title}</a></li>)}
                 </ul>
             </header>            
         );

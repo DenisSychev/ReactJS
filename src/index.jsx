@@ -7,16 +7,17 @@ import Header from 'components/Header';
 import NavigationMenu from 'components/NavigationMenu';
 import {navigationMenuItems} from 'components/NavigationMenu/NavigationMenuItems';
 
-import Content from 'components/Content';
-import {contentItems} from 'components/Content/contentItems';
+import PostsList from 'containers/PostsContainer';
+import UserList from 'containers/UserListContainer';
 
 class Container extends Component {
     render() {
         return (
             <Fragment>
                 <Header />
-                <NavigationMenu naviMenuItems = {navigationMenuItems} />
-                <Content contentItems = {contentItems} hide/>
+                <NavigationMenu naviMenuItems={navigationMenuItems} />
+                <PostsList />
+                <UserList />
             </Fragment>            
         );
     }
