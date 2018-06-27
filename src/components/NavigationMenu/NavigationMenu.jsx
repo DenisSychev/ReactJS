@@ -4,11 +4,11 @@ import './NavigationMenu.sass';
 
 export default class NavigationMenu extends PureComponent {
     render() {
-        const { naviMenuItems } = this.props;
         return (
             <BrowserRouter>
                 <header>
                     <ul className="navi container">
+                        <li><Link to="/">Обложка</Link></li>
                         <li><Link to="/users">Пользователи</Link></li>
                         <li><Link to="/posts">Истории и комментарии</Link></li>
                     </ul>

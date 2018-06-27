@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import './style.sass';
+import 'components/NavigationMenu/NavigationMenu.sass';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-
-import NavigationMenu from 'components/NavigationMenu';
-import { navigationMenuItems } from 'components/NavigationMenu/NavigationMenuItems';
 
 import routes from './routes';
 
@@ -17,11 +15,19 @@ class Container extends Component {
         return (
             <Fragment>
                 <Header />
-                <NavigationMenu naviMenuItems={navigationMenuItems} />
                 <BrowserRouter>
+                <Fragment>
+                    <header>
+                        <ul className="navi container">
+                            <li><Link to="/">Обложка</Link></li>
+                            <li><Link to="/users">Пользователи</Link></li>
+                            <li><Link to="/posts">Истории и комментарии</Link></li>
+                        </ul>
+                    </header>
                     <Switch>
                         {routes.map((route) => <Route {...route} />)}
                     </Switch>
+                    </Fragment>
                 </BrowserRouter>
                 <Footer />
             </Fragment>
