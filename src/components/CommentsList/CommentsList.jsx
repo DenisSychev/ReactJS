@@ -7,7 +7,7 @@ export default class CommentsList extends PureComponent {
         return (
             <Fragment>
                 {comments.map(comment => 
-                <div key={comment.id}>
+                <div key={comment.id} className="text_comment">
                     <p className="author">{comment.name}</p>
                     <p>{comment.body}</p>
                 </div>)}

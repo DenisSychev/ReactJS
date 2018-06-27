@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import './Comment.sass';
 
 export default class CommentsAdd extends PureComponent {
     constructor(props) {
