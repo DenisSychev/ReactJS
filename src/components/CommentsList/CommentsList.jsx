@@ -11,7 +11,7 @@ export default class CommentsList extends PureComponent {
                     <p className="author">{comment.name}</p>
                     <p>{comment.body}</p>
                 </div>)}
-                <button className="red_button" onClick={onLoadMore}>Загрузить ещё комментарии</button>
+                <button className="white_button" onClick={onLoadMore}>Загрузить ещё комментарии</button>
             </Fragment>
         );
     }

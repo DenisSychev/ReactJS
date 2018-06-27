@@ -1,12 +1,15 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
+import './users.sass';
 
 export default class UserList extends PureComponent {
     render() {
-        const {users} = this.props;
+        const { users } = this.props;
         return (
-            <ul>
-                {users.map(user => <li key={user.id}>{user.name}</li>)}
-            </ul>
+            <div className="user_list">
+                <ul>
+                    {users.map(user => <li key={user.id}>{user.name}</li>)}
+                </ul>
+            </div>
         );
     }
 };

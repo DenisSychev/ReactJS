@@ -17,7 +17,7 @@ export default class PostsList extends PureComponent {
                     <CommentsAdd />
                     <CommentsList />
                 </div>)}
-                <button className="red_button" onClick={onLoadMore}>Загрузить ещё статьи</button>
+                <button className="white_button" onClick={onLoadMore}>Загрузить ещё статьи</button>
             </Fragment>
         );
     }
