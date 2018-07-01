@@ -1,6 +1,6 @@
 import PostsList from 'containers/PostsContainer';
 import UserList from 'containers/UserListContainer';
-import UserContainer from `containers/UserContainer`;
+import User from 'containers/UserContainer';
 import Home from 'components/Home'
 
 export default [
@@ -10,12 +10,17 @@ export default [
         component: Home,
     },
     {
-        path: '/users/:id',
+        path: '/users/',
         exact: true,
         component: UserList,
     },
     {
-        path: '/posts/:id',
+        path: '/users/:id',
+        exact: true,
+        component: User,
+    },
+    {
+        path: '/posts/',
         exact: true,
         component: PostsList,
     },
