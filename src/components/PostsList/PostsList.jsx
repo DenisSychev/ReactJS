@@ -1,4 +1,5 @@
 import React, {PureComponent, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import './post.sass';
 
 import CommentsList from 'containers/CommentsContainer';
@@ -11,7 +12,7 @@ export default class PostsList extends PureComponent {
             <Fragment>
                 {posts.map(post => 
                 <div className="post container" key={post.id}>
-                    <h1>{post.title}</h1>
+                    <h1><Link to={`/posts/${post.id}`}>{post.title}</Link></h1>
                     <p className="author">{post.userId}</p>
                     <p>{post.body}</p>
                     <CommentsAdd />
