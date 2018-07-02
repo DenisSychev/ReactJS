@@ -1,40 +1,23 @@
 import React, {PureComponent, Fragment} from 'react';
+import {connect} from 'react-redux';
 
 import Post from 'components/Post';
 
-export default class PostContainer extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true,
-            post: {}
-        };
-    }
-
-    componentDidMount() {
-        const {match} = this.props;
-        this.setState({loading: true});
-        fetch(`https://jsonplaceholder.typicode.com/posts/${match.params.id}`)
-        .then((response) => response.json())
-        .then((post) => {
-            this.setState({
-                loading: false,
-                post
-            })
-        })
-        .catch(() => {
-            this.setState({loading: false})
-        });
-    }
-
+class PostContainer extends PureComponent {
     render() {
-        const {loading, post} = this.state;
+        const {post} = this.props;
         return (
             <Fragment>
                 <div className = "content container">
-                    {loading ? <div>Секундочку, идёт загрузка...</div> : <Post post={post} />}
+                    <Post post={post} />
                 </div>
             </Fragment>
         );
     }
 }
+
+export default connect(
+    (state, props) => ({
+        post: state.posts.entries.find((post) => post.id === +props.match.params.id)
+    })
+)(PostContainer);
