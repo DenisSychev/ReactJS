@@ -27,8 +27,7 @@ class PostsContainer extends PureComponent {
                 </div>
             </Fragment>
         );
-    }
-    
+    }    
 }
 
 function mapStateToProps(state, props) {
