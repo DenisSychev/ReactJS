@@ -1,51 +1,58 @@
 import React, {PureComponent, Fragment} from 'react';
+import {connect} from 'react-redux';
 
 import PostsList from 'components/PostsList';
+import {loadPosts} from 'actions/posts';
 
-export default class PostsContainer extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true,
-            posts: []
-        };
-    }
-
-    loadPosts() {
-        const {page, posts} = this.state;
-        if (page === 1) {
-            this.setState({loading: true});
-        }        
-        fetch(`https://jsonplaceholder.typicode.com/posts?limit=10&_page=${page}`)
-        .then((response) => response.json())
-        .then((result) => {
-            this.setState({
-                loading: false,
-                page: page + 1,
-                posts: posts.concat(result),
-            })
-        })
-        .catch(() => {
-            this.setState({loading: false})
-        });
-    };
+class PostsContainer extends PureComponent {
 
     componentDidMount() {
-        this.loadPosts();
+        const {load, posts} = this.props;
+        if (!posts.length) {
+            load();
+        }
     };
 
     handleLoadMore = () => {
-        this.loadPosts();
+        const {load} = this.props;
+        load();
     };
 
     render() {
-        const {loading, posts} = this.state;
+        const {loading, posts} = this.props;
         return (
             <Fragment>
                 <div className="content container">
-                    {loading ? <div>Секундочку, идёт загрузка...</div> : <PostsList onLoadMore={this.handleLoadMore} posts={posts} />}
+                    {loading && !posts.length ? <div>Секундочку, идёт загрузка...</div> : <PostsList onLoadMore={this.handleLoadMore} posts={posts} />}
                 </div>
             </Fragment>
         );
     }
+    
 }
+
+function mapStateToProps(state, props) {
+    return {
+        ...props,
+        loading: state.posts.loading,
+        posts: state.posts.article,
+        page: state.posts.page,
+    };
+}
+
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        load: loadPosts.bind(null, dispatch),
+    };
+}
+
+function mergeMap(stateProps, dispatchProps, ownProps) {
+    return {
+        ...stateProps,
+        ...ownProps,
+        load: () => dispatchProps.load(stateProps.page),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeMap)(PostsContainer);

@@ -1,33 +1,18 @@
 import React, {PureComponent, Fragment} from 'react';
+import {connect} from 'react-redux';
 
 import UserList from 'components/UserList';
+import {loadUsers} from 'actions/users';
 
-export default class UserListContainer extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true,
-            users: []
-        };
-    }
+class UserListContainer extends PureComponent {
 
     componentDidMount() {
-        this.setState({loading: true});
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then((response) => response.json())
-        .then((result) => {
-            this.setState({
-                loading: false,
-                users: result
-            })
-        })
-        .catch(() => {
-            this.setState({loading: false})
-        });
+        const {load} = this.props;
+        load();
     }
 
     render() {
-        const {loading, users} = this.state;
+        const {loading, users} = this.props;
         return (
             <Fragment>
                 <div className = "content container">
@@ -37,3 +22,20 @@ export default class UserListContainer extends PureComponent {
         );
     }
 }
+
+function mapStateToProps(state, props) {
+    return {
+        ...props,
+        loading: state.users.loading,
+        users: state.users.people,
+    };
+}
+
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        load: () => loadUsers(dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserListContainer);

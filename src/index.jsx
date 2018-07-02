@@ -1,6 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import './style.sass';
 
@@ -9,6 +10,7 @@ import NavigationMenu from 'components/NavigationMenu';
 import Footer from 'components/Footer';
 
 import routes from './routes';
+import store from './store';
 
 class Container extends Component {
     render() {
@@ -16,11 +18,11 @@ class Container extends Component {
             <Fragment>
                 <Header />
                 <BrowserRouter>
-                <Fragment>
-                    <NavigationMenu />
-                    <Switch>
-                        {routes.map((route, idx) => <Route key={idx} {...route} />)}
-                    </Switch>
+                    <Fragment>
+                        <NavigationMenu />
+                        <Switch>
+                            {routes.map((route, idx) => <Route key={idx} {...route} />)}
+                        </Switch>
                     </Fragment>
                 </BrowserRouter>
                 <Footer />
@@ -29,4 +31,4 @@ class Container extends Component {
     }
 };
 
-ReactDOM.render(<Container />, document.getElementById('container'));
+ReactDOM.render(<Provider store={store}><Container /></Provider>, document.getElementById('container'));
