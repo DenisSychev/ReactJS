@@ -18,6 +18,6 @@ class PostContainer extends PureComponent {
 
 export default connect(
     (state, props) => ({
-        post: state.posts.entries.find((post) => post.id === +props.match.params.id)
+        post: state.posts.article.find((post) => post.id === +props.match.params.id)
     })
 )(PostContainer);
