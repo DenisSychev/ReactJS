@@ -27,10 +27,10 @@ class PostsContainer extends PureComponent {
                 </div>
             </Fragment>
         );
-    }
-    
+    }    
 }
 
+//возвращает объект (папка reducers/соответствующий файл)
 function mapStateToProps(state, props) {
     return {
         ...props,
@@ -40,6 +40,7 @@ function mapStateToProps(state, props) {
     };
 }
 
+//возвращает действия (папка actions/соответствующий файл)
 function mapDispatchToProps(dispatch, props) {
     return {
         ...props,
@@ -55,4 +56,5 @@ function mergeMap(stateProps, dispatchProps, ownProps) {
     }
 }
 
+//передаёт полученные данные из store в функцию PostsContainer в этом файле 
 export default connect(mapStateToProps, mapDispatchToProps, mergeMap)(PostsContainer);

@@ -11,7 +11,7 @@ export default [
         component: Home,
     },
     {
-        path: '/users/',
+        path: '/users',
         exact: true,
         component: UserList,
     },
@@ -21,7 +21,7 @@ export default [
         component: User,
     },
     {
-        path: '/posts/',
+        path: '/posts',
         exact: true,
         component: PostsList,
     },
