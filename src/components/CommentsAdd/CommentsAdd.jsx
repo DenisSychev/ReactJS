@@ -6,7 +6,8 @@ export default class CommentsAdd extends PureComponent {
         this.state = {
             displayForm: false,
             displayAddButton: true,
-            displayHideButton: false
+            displayHideButton: false,
+            value: ''
         };
     }
 
@@ -24,16 +25,43 @@ export default class CommentsAdd extends PureComponent {
         e.preventDefault();
     }
 
+    handleCommentTextChange = (event) => {
+        this.setState({value: event.target.value});
+    }
+
+    handleButtonLeaveComment = (event) => {
+        fetch('http://localhost:8000/api/comment', { 
+            body: this.state.value,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST' 
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((content) => {
+            console.log(content);
+        })
+        .catch((error) => {
+            console.log(error.message);
+        })
+    }
+
     render() {
-        const {displayForm} = this.state;
-        const {displayAddButton} = this.state;
-        const {displayHideButton} = this.state;
+        const { displayForm } = this.state;
+        const { displayAddButton } = this.state;
+        const { displayHideButton } = this.state;
         return (
             <div className="comment">
-                <button style = {{display: displayAddButton ? 'block' : 'none' }} className="red_button" onClick = {this.handleButtonClickShowComment}>Добавить комментарий</button>
-                <button style = {{display: displayHideButton ? 'block' : 'none' }} className="red_button" onClick = {this.handleButtonClickHideComment}>Скрыть поле комментария</button>
-                <div style = {{display: displayForm ? 'block' : 'none' }}>
-                    <input type="text" className="text_comment" />
+                <button style={{ display: displayAddButton ? 'block' : 'none' }} className="red_button" onClick={this.handleButtonClickShowComment}>Добавить комментарий</button>
+                <button style={{ display: displayHideButton ? 'block' : 'none' }} className="white_button" onClick={this.handleButtonClickHideComment}>Скрыть поле комментария</button>
+                <div style={{ display: displayForm ? 'block' : 'none' }}>
+                    <label>
+                        <input type="text" className="text_comment" value={this.state.value} onChange={this.handleCommentTextChange} />
+                    </label>
+                    <button className="red_button" onClick={this.handleButtonLeaveComment}>Оставить этот комментарий</button>
                 </div>
             </div>
         );
